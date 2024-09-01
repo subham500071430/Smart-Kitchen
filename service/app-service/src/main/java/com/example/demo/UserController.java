@@ -30,21 +30,22 @@ public class UserController {
         return users;
     }
 
-    @GetMapping(path = "/validateUser")
+    @PostMapping(path = "/validateUser")
     @ResponseBody
-    public boolean validateUser(@RequestParam String email_id , @RequestParam String password){
+    public boolean validateUser(@RequestBody UserDTO userDTO){
 
-         Optional<User> user = usersRepository.findById(email_id);
+        User user = userMapper.mapToUser(userDTO);
 
-         if(!user.isEmpty()){
+        Optional<User> optionalUser = usersRepository.findById(user.getEmail_id());
 
-             if(user.get().getPassword().equals(password)){
+         if(!optionalUser.isEmpty()){
+
+             if(optionalUser.get().getPassword().equals(user.getPassword())){
                  return true;
              }
          }
 
          return false;
-
     }
 
     @GetMapping(path = "/hello")
