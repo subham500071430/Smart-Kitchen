@@ -2,30 +2,20 @@ import axios from "axios";
 
 const api = "http://localhost:8080/api/validateUser"
 
-const getUser = async () => {
-
-      const response = await axios.get(api)
-
-      const data = await response.data
-
-      console.log(data)
-}
 
 const validateUser = async (jsonData) => {
 
-      const response = await axios.post(api, jsonData,
-            {
+      try {
+            const response = await axios.post(api, jsonData, {
                   headers: {
                         'Content-Type': 'application/json'
                   }
-            }
-      ).then(response => {
-            console.log('Response:', response.data);
-      }).catch(error => {
+            });
+            return response.data; // Return the data received from the API
+      } catch (error) {
             console.error('Error:', error);
-      });
-
-      console.log(response);
+            return { error: error.message }; // Return an error object or handle it as needed
+      }
 }
 
 
