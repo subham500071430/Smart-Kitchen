@@ -4,9 +4,9 @@ const api = "http://localhost:8080/api/validateUser"
 
 const getUser = async () => {
 
-      const respone = await axios.get(api)
+      const response = await axios.get(api)
 
-      const data = await respone.data
+      const data = await response.data
 
       console.log(data)
 }
