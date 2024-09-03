@@ -1,5 +1,6 @@
 // Login.js
 import React, { useState } from 'react';
+import ValidateUser from '../../Service/userService';
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState('');
@@ -7,7 +8,11 @@ function Login({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        const jsonData = {
+            email_id : username,
+            password : password
+        };
+        ValidateUser(jsonData);
         // Implement login logic here
         onLogin(true); // Call the parent function to indicate the user is logged in
     };

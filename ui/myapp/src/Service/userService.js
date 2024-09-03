@@ -3,7 +3,7 @@ import axios from "axios";
 const api = "http://localhost:8080/api/validateUser"
 
 
-const validateUser = async (jsonData) => {
+const ValidateUser = async (jsonData) => {
 
       try {
             const response = await axios.post(api, jsonData, {
@@ -19,4 +19,4 @@ const validateUser = async (jsonData) => {
 }
 
 
-export default validateUser
+export default ValidateUser
