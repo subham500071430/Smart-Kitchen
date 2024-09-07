@@ -1,12 +1,12 @@
 // AuthPage.js
 import React, { useState } from 'react';
-import Login from './login';
-import Signup from './signup';
+import Login from './Login';
+import Signup from './Signup';
 
 function AuthPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-
+    
     const handleLogin = (status) => {
         setIsLoggedIn(status);
     };
